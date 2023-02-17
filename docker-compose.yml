@@ -4,22 +4,22 @@ services:
   nginx:
     image: nginx
     ports:
-      - "80:80"
+      - "3000:80"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - django
       - vue
 
   django:
     build: backend
-    command: python project/manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
 
   vue:
     build:
-      context: frontend
+      context: ./frontend
       dockerfile: ./Dockerfile
     ports:
       - "8080:8080"
