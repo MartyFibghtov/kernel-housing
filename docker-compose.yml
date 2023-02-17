@@ -12,14 +12,14 @@ services:
       - vue
 
   django:
-    build: ./django
+    build: backend
     command: python project/manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
 
   vue:
     build:
-      context: ./vue
+      context: frontend
       dockerfile: ./Dockerfile
     ports:
       - "8080:8080"
