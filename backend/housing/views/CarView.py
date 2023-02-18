@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from housing.models.CarModels import Car
+from housing.models.car_models import Car
 from housing.permissions import SecurityPermission
 from housing.serializers.CarSerializer import CarSerializer
 from housing.services.CarService import CarData, CarService

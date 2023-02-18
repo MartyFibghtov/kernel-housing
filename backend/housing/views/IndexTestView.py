@@ -11,7 +11,7 @@ from rest_framework import permissions
 from rest_framework import status
 
 
-from housing.models.CarModels import Car
+from housing.models.car_models import Car
 from housing.services.CarService import CarService, CarData
 
 

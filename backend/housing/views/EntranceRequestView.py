@@ -6,7 +6,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from housing.models.EntranceRequestModels import EntranceRequest
+from housing.models.entrance_request_models import EntranceRequest
 from housing.permissions import SecurityPermission
 from housing.serializers.EntranceRequestSerializer import EntranceRequestSerializer
 from housing.services.CarService import CarData

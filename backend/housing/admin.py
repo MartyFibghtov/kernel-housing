@@ -2,13 +2,13 @@ from django.contrib import admin
 
 # Register your models here.
 from django.contrib import admin
-from housing.models.AddressModels import *
-from housing.models.CarModels import *
-from housing.models.ContactsModels import *
-from housing.models.EntranceRequestModels import *
-from housing.models.InOutHistoryModels import *
-from housing.models.KPPmodels import *
-from housing.models.VisitorModels import *
+from housing.models.address_models import *
+from housing.models.car_models import *
+from housing.models.contacts_models import *
+from housing.models.entrance_request_models import *
+from housing.models.in_out_history_models import *
+from housing.models.kpp_models import *
+from housing.models.visitor_models import *
 
 admin.site.register(PersonalAccount)
 admin.site.register(Street)

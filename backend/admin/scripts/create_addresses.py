@@ -1,5 +1,5 @@
-from housing.models import KPPmodels, ContactsModels, CarModels
-from housing.models import AddressModels
+from housing.models import kpp_models, contacts_models, car_models
+from housing.models import address_models
 
 
 # Create KPP
