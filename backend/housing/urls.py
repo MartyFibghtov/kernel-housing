@@ -1,21 +1,29 @@
-"""housing URL Configuration
+from django.urls import include, path
+from rest_framework import routers
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.contrib import admin
-from django.urls import path, include
+from housing.views.CarView import car_get_all, car_get_by_id, car_create
+
+from housing.views.EntranceRequestView import entrance_request_get_all, entrance_request_get_by_id, \
+    entrance_request_create, entrance_request_delete_by_id
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    # path('', index, name='index'),
+    # path('', include(router.urls)),
+    # path('', include('rest_framework.urls', namespace="rest_framework")),
+
+    # Cars Get Post
+    path('cars.getAll/', car_get_all, name='cars.getAll'),
+    path('cars.getById/', car_get_by_id, name='cars.getById'),
+    path('cars.create/', car_create, name='cars.Create'),
+
+    # EntranceRequests Get
+    path('entranceRequest.getAll/', entrance_request_get_all, name='entranceRequest.GetAll'),
+    path('entranceRequest.getById/', entrance_request_get_by_id, name='entranceRequest.getById'),
+    path('entranceRequest.create/', entrance_request_create, name='entranceRequest.create'),
+    path('entranceRequest.deleteById/', entrance_request_delete_by_id, name='entranceRequest.deleteById'),
+    # path()
+
+    # Check how permissions work
+    # path('test/', TestView.as_view(), name='test'),
+
 ]
