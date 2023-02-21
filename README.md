@@ -4,6 +4,12 @@ Django + Vue app for managing gate requests in villages.
 
 API Documentation
 
+[Tokens](#tokens) </br>
+[Cars](#cars-) </br>
+[EntranceRequest](#entrance-request) </br>
+[Address](#address) </br>
+
+
 # Headers:
 Authorization: Token {auth token}
 
@@ -26,6 +32,7 @@ Authorization: Token {auth token}
 
 </details>
 
+--- 
 
 # Cars:
 <details>
@@ -90,6 +97,41 @@ Permissions: Admin or Security
 | `message` | string    | An optional message providing additional information about the result of the operation. |
 
 </details>
+
+# Car marks
+<details>
+ <summary><code>GET</code> <code><b>/api/cars/marks/get-all/</b></code> <code>(returns all car marks and their ids)</code></summary>
+
+Permissions: Admin or Security
+
+##### Parameters
+ No
+
+##### Response
+| name      | data type     | description                                                                             |
+|-----------|---------------|-----------------------------------------------------------------------------------------|
+| `result`  | List[CarMark] | List of car marks with ids                                                              |
+
+</details>
+
+# Car types
+<details>
+ <summary><code>GET</code> <code><b>/api/cars/types/get-all/</b></code> <code>(returns all car types and their ids)</code></summary>
+
+Permissions: Admin or Security
+
+##### Parameters
+
+No 
+
+##### Response
+| name      | data type     | description                |
+|-----------|---------------|----------------------------|
+| `result`  | List[CarType] | List of car types with ids |
+
+</details>
+
+---
 
 # Entrance request
 
@@ -161,5 +203,61 @@ Permissions: Admin or Security
 |-----------|------------------|-----------------------------------------------------------------------------------------------------|
 | `result`  | Entrance Request | id of created request    Created entrance request Indicates if the operation was successful or not. |
 | `message` | string           | An optional message providing additional information about the result of the operation.             |
+
+</details>
+
+___
+
+# Address
+
+# Personal Account
+<details>
+ <summary><code>GET</code> <code><b>/api/address/personal-account/get-all/</b></code> <code>(returns all personal accounts)</code></summary>
+
+Permissions: Admin or Security
+
+##### Parameters
+
+No 
+
+##### Response
+| name      | data type             | description |
+|-----------|-----------------------|-------------|
+| `result`  | List[PersonalAccount] | List of PA  |
+
+</details>
+
+# Streets
+<details>
+ <summary><code>GET</code> <code><b>/api/address/streets/get-all/</b></code> <code>(returns all street names and their ids)</code></summary>
+
+Permissions: Admin or Security
+
+##### Parameters
+
+No 
+
+##### Response
+| name      | data type    | description              |
+|-----------|--------------|--------------------------|
+| `result`  | List[Street] | List of streets with ids |
+
+</details>
+
+
+# Addresses
+<details>
+ <summary><code>GET</code> <code><b>/api/address/address/get-all/</b></code> <code>(returns all addresses and their ids)</code></summary>
+
+Permissions: Admin or Security
+
+##### Parameters
+
+No 
+
+##### Response
+| name      | data type     | description              |
+|-----------|---------------|--------------------------|
+| `result`  | List[Address] | List of streets with ids |
 
 </details>
