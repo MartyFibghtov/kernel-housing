@@ -5,7 +5,7 @@ Django + Vue app for managing gate requests in villages.
 API Documentation
 
 [Tokens](#tokens) </br>
-[Cars](#cars-) </br>
+[Cars](#cars) </br>
 [EntranceRequest](#entrance-request) </br>
 [Address](#address) </br>
 
@@ -34,7 +34,7 @@ Authorization: Token {auth token}
 
 --- 
 
-# Cars:
+# Cars
 <details>
  <summary><code>GET</code> <code><b>/api/cars/get-all/</b></code> <code>(returns all cars)</code></summary>
 
