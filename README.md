@@ -10,10 +10,13 @@ API Documentation
 [Address](#address) </br>
 
 
-# Headers:
+# Headers
 Authorization: Token {auth token}
 
 # Tokens
+
+## Get Token
+
 <details>
  <summary><code>POST</code> <code><b>/api/token-auth/</b></code> <code>(returns users token)</code></summary>
 
@@ -35,6 +38,7 @@ Authorization: Token {auth token}
 --- 
 
 # Cars
+
 <details>
  <summary><code>GET</code> <code><b>/api/cars/get-all/</b></code> <code>(returns all cars)</code></summary>
 
@@ -98,7 +102,7 @@ Permissions: Admin or Security
 
 </details>
 
-# Car marks
+## Car marks
 <details>
  <summary><code>GET</code> <code><b>/api/cars/marks/get-all/</b></code> <code>(returns all car marks and their ids)</code></summary>
 
@@ -114,7 +118,7 @@ Permissions: Admin or Security
 
 </details>
 
-# Car types
+## Car types
 <details>
  <summary><code>GET</code> <code><b>/api/cars/types/get-all/</b></code> <code>(returns all car types and their ids)</code></summary>
 
@@ -206,11 +210,34 @@ Permissions: Admin or Security
 
 </details>
 
+<details>
+ <summary><code>DELETE</code> <code><b>api/entrance-request/delete-by-id</b></code> <code>(creates new entrance request)</code></summary>
+
+Deletes entrance request.
+
+Permissions: Admin or Security 
+
+##### Parameters
+
+| name | type     | data type | description                 |
+|------|----------|-----------|-----------------------------|
+| `id` | required | int       | Id of request to be deleted |
+
+##### Response
+| name      | data type        | description                                                                                         |
+|-----------|------------------|-----------------------------------------------------------------------------------------------------|
+| `result`  | Entrance Request | id of created request    Created entrance request Indicates if the operation was successful or not. |
+| `message` | string           | An optional message providing additional information about the result of the operation.             |
+
+</details>
+
+
+
 ___
 
 # Address
 
-# Personal Account
+## Personal Account
 <details>
  <summary><code>GET</code> <code><b>/api/address/personal-account/get-all/</b></code> <code>(returns all personal accounts)</code></summary>
 
@@ -227,7 +254,7 @@ No
 
 </details>
 
-# Streets
+## Streets
 <details>
  <summary><code>GET</code> <code><b>/api/address/streets/get-all/</b></code> <code>(returns all street names and their ids)</code></summary>
 
@@ -245,7 +272,7 @@ No
 </details>
 
 
-# Addresses
+## Addresses
 <details>
  <summary><code>GET</code> <code><b>/api/address/address/get-all/</b></code> <code>(returns all addresses and their ids)</code></summary>
 

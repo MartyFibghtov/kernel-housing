@@ -12,18 +12,14 @@ urlpatterns = [
     # path('', include('rest_framework.urls', namespace="rest_framework")),
 
     # Cars Get Post
-    path('cars.getAll/', car_get_all, name='cars.getAll'),
-    path('cars.getById/', car_get_by_id, name='cars.getById'),
-    path('cars.create/', car_create, name='cars.Create'),
+    path('cars/get-all/', car_get_all, name='cars/get-all/'),
+    path('cars/get-by-id/', car_get_by_id, name='cars/get-by-id/'),
+    path('cars/create/', car_create, name='cars/create/'),
 
     # EntranceRequests Get
-    path('entranceRequest.getAll/', entrance_request_get_all, name='entranceRequest.GetAll'),
-    path('entranceRequest.getById/', entrance_request_get_by_id, name='entranceRequest.getById'),
-    path('entranceRequest.create/', entrance_request_create, name='entranceRequest.create'),
-    path('entranceRequest.deleteById/', entrance_request_delete_by_id, name='entranceRequest.deleteById'),
-    # path()
-
-    # Check how permissions work
-    # path('test/', TestView.as_view(), name='test'),
+    path('entrance-request/get-all/', entrance_request_get_all, name='entrance-request/get-all'),
+    path('entrance-request/get-by-id/', entrance_request_get_by_id, name='entrance-request/get-by-id'),
+    path('entrance-request/create/', entrance_request_create, name='entrance-request/create'),
+    path('entrance-request/delete-by-id/', entrance_request_delete_by_id, name='entrance-request/delete-by-id/'),
 
 ]
