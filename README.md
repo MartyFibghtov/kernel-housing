@@ -194,13 +194,13 @@ Permissions: Admin or Security
 
 ##### Parameters
 
-| name              | type     | data type | description                        |
-|-------------------|----------|-----------|------------------------------------|
-| `request_account` | required | int       | Name of Personal account           |
-| `car`             | required | json      | object with id parameter           |
-| `is_car`          | required | bool      | is car or not - for adding humans  |
-| `is_paid`         | optional | bool      | Was the order paid                 |
-| `note`            | optional | string    | Any notes regarding request        |
+| name              | type     | data type | description                       |
+|-------------------|----------|-----------|-----------------------------------|
+| `request_account` | required | int       | Name of Personal account          |
+| `car`             | required | int       | Id of requested car               |
+| `is_car`          | required | bool      | is car or not - for adding humans |
+| `is_paid`         | optional | bool      | Was the order paid                |
+| `note`            | optional | string    | Any notes regarding request       |
 
 ##### Response
 | name      | data type        | description                                                                                         |
