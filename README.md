@@ -254,9 +254,9 @@ No
 
 </details>
 
-## Streets
+## Streets - Not implemented
 <details>
- <summary><code>GET</code> <code><b>/api/address/streets/get-all/</b></code> <code>(returns all street names and their ids)</code></summary>
+ <summary><code>GET</code> <code><b>/api/address/street/get-all/</b></code> <code>(returns all street names and their ids)</code></summary>
 
 Permissions: Admin or Security
 
@@ -272,7 +272,7 @@ No
 </details>
 
 
-## Addresses
+## Addresses - Not implemented
 <details>
  <summary><code>GET</code> <code><b>/api/address/address/get-all/</b></code> <code>(returns all addresses and their ids)</code></summary>
 

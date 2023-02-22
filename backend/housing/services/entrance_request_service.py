@@ -3,18 +3,19 @@ from dataclasses import dataclass
 from housing.models.address_models import PersonalAccount
 from housing.models.car_models import CarMark, CarType, Car
 from housing.models.entrance_request_models import EntranceRequest
-from housing.services.CarService import CarData, CarService
-from housing.services.PerosnalAccountService import PersonalAccountService
+from housing.services.car_service import CarData, CarService
+from housing.services.perosnal_account_service import PersonalAccountService
 
 @dataclass
 class EntranceRequestData:
-    request_account: str
+    request_account: PersonalAccount
     car: CarData
     is_car: bool
     is_paid: bool
     # Not required fields
     note: str = None
     date_created: str = None
+
 
 class EntranceRequestService:
     #TODO For cars and humans
@@ -25,7 +26,8 @@ class EntranceRequestService:
 
     @staticmethod
     def validate_entrance_request_data(entrance_request_data: EntranceRequestData):
-        PersonalAccountService.validate_address(entrance_request_data.request_account)
+        if not PersonalAccount.objects.filter(pk=entrance_request_data).exists():
+            raise ValueError("Unknown car id")
         if not Car.objects.filter(pk=entrance_request_data.car.id).exists():
             raise ValueError("Unknown car id")
 
@@ -38,9 +40,9 @@ class EntranceRequestService:
         car = Car.objects.get(pk=erd.car.id)
 
         entrance_request = EntranceRequest(
-            request_account=request_account,
+            request_account=entrance_request_data.request_account.id,
             is_car=erd.is_car,
-            car=car,
+            car=car.id,
             is_paid=erd.is_paid,
             note=erd.note
         )

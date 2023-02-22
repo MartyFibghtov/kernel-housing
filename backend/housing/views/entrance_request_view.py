@@ -1,4 +1,5 @@
 import collections
+import pprint
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
@@ -8,18 +9,22 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from housing.models.entrance_request_models import EntranceRequest
 from housing.permissions import SecurityPermission
-from housing.serializers.EntranceRequestSerializer import EntranceRequestSerializer
-from housing.services.CarService import CarData
-from housing.services.EntranceRequestService import EntranceRequestService, EntranceRequestData
+from housing.serializers.entrance_request_serializer import EntranceRequestSerializer
+from housing.services.car_service import CarData
+from housing.services.entrance_request_service import EntranceRequestService, EntranceRequestData
+from housing.views.wrap_responses import response_wrap
 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def entrance_request_get_all(request):
-    cars = EntranceRequest.objects.all()
-    serializer = EntranceRequestSerializer(cars, many=True)
+    er = EntranceRequest.objects.all()
+    serializer = EntranceRequestSerializer(er, many=True)
+    print(serializer.data)
 
-    return Response(serializer.data)
+    response = response_wrap(serializer.data)
+
+    return Response(response)
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -35,22 +40,24 @@ def entrance_request_get_by_id(request):
 
     return Response(serializer.data)
 
+
 @api_view(['POST'])
 @permission_classes([SecurityPermission])
 def entrance_request_create(request):
     er = EntranceRequestSerializer(data=request.data)
-
     if not er.is_valid():
-        return Response(er.errors)
+        return Response(response_wrap(ok=False, message=er.errors))
     validated_data: collections.OrderedDict = er.validated_data
 
-    er_data = EntranceRequestData(car=CarData(**validated_data.pop('car')), **validated_data)
+    er_data = EntranceRequest(**validated_data)
     try:
-        er_service = EntranceRequestService.create_entrance_request(er_data)
+        # er_service = EntranceRequestService.create_entrance_request(er_data)
+        er_data.save()
+        response = response_wrap(EntranceRequestSerializer(er_data).data)
     except ValueError as e:
-        return Response({"error": str(e)})
+        response = response_wrap(ok=False, message=str(e))
 
-    return Response(status=status.HTTP_201_CREATED)
+    return Response(response)
 
 
 @api_view(['DELETE'])

@@ -8,6 +8,7 @@ class CarSerializer(serializers.Serializer):
     car_mark = serializers.CharField(allow_null=True, required=False)
     owner = serializers.CharField(allow_null=True, required=False)
 
+
 # class CarSerializer(serializers.ModelSerializer):
 #
 # 	car_type = serializers.SlugRelatedField(read_only=True, slug_field="name")
@@ -17,3 +18,12 @@ class CarSerializer(serializers.Serializer):
 # 	class Meta:
 # 		model = Car
 # 		fields = ['car_number', 'owner', 'car_mark', 'car_type']
+
+class CarTypeSerializer(serializers.Serializer):
+    id = serializers.IntegerField(allow_null=True, required=False)
+    name = serializers.CharField(allow_null=True, required=False)
+
+
+class CarMarkSerializer(serializers.Serializer):
+    id = serializers.IntegerField(allow_null=True, required=False)
+    name = serializers.CharField(allow_null=True, required=False)
