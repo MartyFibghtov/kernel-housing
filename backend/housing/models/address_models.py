@@ -20,6 +20,8 @@ class PersonalAccount(models.Model):
     def __str__(self):
         return f"{self.address.street.short_name} {self.address.house_number}/{self.address.flat_number}"
 
+    def address_name(self):
+        return str(self)
 
 class Street(models.Model):
     """Streets in the village."""

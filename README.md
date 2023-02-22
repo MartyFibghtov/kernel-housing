@@ -5,15 +5,18 @@ Django + Vue app for managing gate requests in villages.
 API Documentation
 
 [Tokens](#tokens) </br>
-[Cars](#cars-) </br>
+[Cars](#cars) </br>
 [EntranceRequest](#entrance-request) </br>
 [Address](#address) </br>
 
 
-# Headers:
+# Headers
 Authorization: Token {auth token}
 
 # Tokens
+
+## Get Token
+
 <details>
  <summary><code>POST</code> <code><b>/api/token-auth/</b></code> <code>(returns users token)</code></summary>
 
@@ -34,7 +37,8 @@ Authorization: Token {auth token}
 
 --- 
 
-# Cars:
+# Cars
+
 <details>
  <summary><code>GET</code> <code><b>/api/cars/get-all/</b></code> <code>(returns all cars)</code></summary>
 
@@ -98,7 +102,7 @@ Permissions: Admin or Security
 
 </details>
 
-# Car marks
+## Car marks
 <details>
  <summary><code>GET</code> <code><b>/api/cars/marks/get-all/</b></code> <code>(returns all car marks and their ids)</code></summary>
 
@@ -114,7 +118,7 @@ Permissions: Admin or Security
 
 </details>
 
-# Car types
+## Car types
 <details>
  <summary><code>GET</code> <code><b>/api/cars/types/get-all/</b></code> <code>(returns all car types and their ids)</code></summary>
 
@@ -190,13 +194,13 @@ Permissions: Admin or Security
 
 ##### Parameters
 
-| name              | type     | data type | description                        |
-|-------------------|----------|-----------|------------------------------------|
-| `request_account` | required | int       | Name of Personal account           |
-| `car`             | required | json      | object with id parameter           |
-| `is_car`          | required | bool      | is car or not - for adding humans  |
-| `is_paid`         | optional | bool      | Was the order paid                 |
-| `note`            | optional | string    | Any notes regarding request        |
+| name              | type     | data type | description                       |
+|-------------------|----------|-----------|-----------------------------------|
+| `request_account` | required | int       | Name of Personal account          |
+| `car`             | required | int       | Id of requested car               |
+| `is_car`          | required | bool      | is car or not - for adding humans |
+| `is_paid`         | optional | bool      | Was the order paid                |
+| `note`            | optional | string    | Any notes regarding request       |
 
 ##### Response
 | name      | data type        | description                                                                                         |
@@ -206,11 +210,34 @@ Permissions: Admin or Security
 
 </details>
 
+<details>
+ <summary><code>DELETE</code> <code><b>api/entrance-request/delete-by-id</b></code> <code>(creates new entrance request)</code></summary>
+
+Deletes entrance request.
+
+Permissions: Admin or Security 
+
+##### Parameters
+
+| name | type     | data type | description                 |
+|------|----------|-----------|-----------------------------|
+| `id` | required | int       | Id of request to be deleted |
+
+##### Response
+| name      | data type        | description                                                                                         |
+|-----------|------------------|-----------------------------------------------------------------------------------------------------|
+| `result`  | Entrance Request | id of created request    Created entrance request Indicates if the operation was successful or not. |
+| `message` | string           | An optional message providing additional information about the result of the operation.             |
+
+</details>
+
+
+
 ___
 
 # Address
 
-# Personal Account
+## Personal Account
 <details>
  <summary><code>GET</code> <code><b>/api/address/personal-account/get-all/</b></code> <code>(returns all personal accounts)</code></summary>
 
@@ -227,9 +254,9 @@ No
 
 </details>
 
-# Streets
+## Streets - Not implemented
 <details>
- <summary><code>GET</code> <code><b>/api/address/streets/get-all/</b></code> <code>(returns all street names and their ids)</code></summary>
+ <summary><code>GET</code> <code><b>/api/address/street/get-all/</b></code> <code>(returns all street names and their ids)</code></summary>
 
 Permissions: Admin or Security
 
@@ -245,7 +272,7 @@ No
 </details>
 
 
-# Addresses
+## Addresses - Not implemented
 <details>
  <summary><code>GET</code> <code><b>/api/address/address/get-all/</b></code> <code>(returns all addresses and their ids)</code></summary>
 

@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 from housing.models.address_models import PersonalAccount
 from housing.models.car_models import CarMark, CarType, Car
-from housing.services.PerosnalAccountService import PersonalAccountService
+from housing.services.perosnal_account_service import PersonalAccountService
 
 
 @dataclass
@@ -21,7 +21,6 @@ class CarService:
     def __init__(self, car_data: CarData):
 
         car = Car.objects.filter(car_number=car_data.car_number)
-
 
         if car:
             self._car = car[0]

@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from housing.serializers.CarSerializer import CarSerializer
+from housing.serializers.car_serializer import CarSerializer
 
 from rest_framework import viewsets
 from rest_framework import permissions
@@ -12,7 +12,7 @@ from rest_framework import status
 
 
 from housing.models.car_models import Car
-from housing.services.CarService import CarService, CarData
+from housing.services.car_service import CarService, CarData
 
 
 # Import permissions
