@@ -8,10 +8,6 @@ from housing.views.entrance_request_view import entrance_request_get_all, entran
     entrance_request_create, entrance_request_delete_by_id
 
 urlpatterns = [
-    # path('', index, name='index'),
-    # path('', include(router.urls)),
-    # path('', include('rest_framework.urls', namespace="rest_framework")),
-
     # Cars Get Post
     path('cars/get-all/', car_get_all, name='cars/get-all/'),
     path('cars/get-by-id/', car_get_by_id, name='cars/get-by-id/'),
