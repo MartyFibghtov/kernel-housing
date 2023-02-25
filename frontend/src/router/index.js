@@ -20,6 +20,10 @@ const routes = [
     path: "/entrance-request/all",
     component: () => import("../views/ErsView.vue"),
   },
+  {
+    path: "/login",
+    component: () => import("../views/LoginView.vue"),
+  },
 ];
 
 const router = createRouter({
