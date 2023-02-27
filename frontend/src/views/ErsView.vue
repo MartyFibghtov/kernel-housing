@@ -1,54 +1,30 @@
-<!-- <form @submit.prevent="submitForm">
-  <div class="form-group">
-    <label for="periodStart">Period Start</label>
-    <input
-      type="date"
-      class="form-control"
-      id="periodStart"
-      v-model="periodStart"
-    />
-  </div>
-  <div class="form-group">
-    <label for="periodEnd">Period End</label>
-    <input
-      type="date"
-      class="form-control"
-      id="periodEnd"
-      v-model="periodEnd"
-    />
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form> -->
-
-
 <template>
   <div class="container md">
     <div class="row">
       <div class="col">
-        <h1>Entrance Requests</h1>
+        <form @submit.prevent="searchForRequests">
+          <div class="form-group d-flex">
+            <input class="form-control flex-grow-1" type="text" placeholder="Search for entrance requests..." v-model="searchRequest" v-on:input="searchForRequests">
+            <button class="btn btn-primary ml-2" type="submit">Search</button>
+          </div>
+        </form>
         <table class=" table">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Date Created</th>
-              <th>Is Car</th>
+              <th>Car</th>
               <th>Is Paid</th>
               <th>Note</th>
               <th>Request Account</th>
-              <th>Car</th>
-              <th>Human</th>
+              <th>Date Created</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="request in requests" :key="request.id">
-              <td>{{ request.id }}</td>
-              <td>{{ request.date_created }}</td>
-              <td>{{ request.is_car }}</td>
+            <tr v-for="request in shownRequest" :key="request.id">
+              <td>{{ request.car.car_number }}</td>
               <td>{{ request.is_paid }}</td>
               <td>{{ request.note }}</td>
               <td>{{ request.request_account.address_name }}</td>
-              <td>{{ request.car.car_number }}</td>
-              <td>{{ request.human }}</td>
+              <td>{{ formatDate(request.date_created) }}</td>
             </tr>
           </tbody>
         </table>
@@ -67,6 +43,8 @@ export default {
       periodStart: null,
       periodEnd: null,
       requests: [],
+      shownRequest: [],
+      searchRequest: "",
     };
   },
   mounted() {
@@ -79,11 +57,39 @@ export default {
         var housingApi = new HousingApi();
         const response = await housingApi.getAllEntranceRequestsWithSubdata();
         this.requests = response;
+        this.shownRequest = response;
         console.log(this.response);
       } catch (error) {
         console.error(error);
       }
     },
+    searchForRequests() {
+      try {
+        var tempArr = [];
+        const searchLower = this.searchRequest.toLowerCase();
+
+        // for (var i = 0; i < this.requests.length; i++)
+        // {
+        //   if 
+        // }
+        this.shownRequest = this.requests.filter((x) => x.car.car_number.toLowerCase().indexOf(searchLower) > -1)
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    formatDate(dateStr) {
+      const date = new Date(dateStr);
+
+      const formatter = new Intl.DateTimeFormat('ru', {
+        hour: '2-digit',
+        minute: '2-digit',
+        day: '2-digit',
+        month: '2-digit',
+        hour12: false,
+      });
+
+      return formatter.format(date);
+    }
   },
 };
 </script>
