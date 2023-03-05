@@ -114,10 +114,11 @@ class HousingApi {
     }
 
     async createEntranceRequest(request_account, car, is_car, is_paid, note) {
-        const url = `${this.apiBaseUrl}/api/entrance-request/create`;
+        const url = `${this.apiBaseUrl}/api/entrance-request/create/`;
         const headers = this.getAuthorizationHeader();
         const data = { request_account, car, is_car, is_paid, note };
         const response = await axios.post(url, data, { headers });
+        console.log(response);
         return response.result;
     }
 
