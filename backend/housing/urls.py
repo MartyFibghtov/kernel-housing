@@ -14,10 +14,10 @@ urlpatterns = [
     path('cars/create/', car_create, name='cars/create/'),
 
     # Car marks
-    path('cars/marks/get-all/', car_type_get_all, name='cars/marks/get-all/'),
+    path('cars/types/get-all/', car_type_get_all, name='cars/types/get-all/'),
 
     # Car types
-    path('cars/types/get-all/', car_mark_get_all, name='cars/types/get-all/'),
+    path('cars/marks/get-all/', car_mark_get_all, name='cars/marks/get-all/'),
 
 
     # EntranceRequests
