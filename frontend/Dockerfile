@@ -5,6 +5,6 @@ EXPOSE 8080
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
-COPY ./src .
+COPY . .
 RUN npm run build
 CMD [ "npm", "run", "serve" ]
