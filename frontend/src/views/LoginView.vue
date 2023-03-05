@@ -25,6 +25,7 @@
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
+      <log-out-button></log-out-button>
     </div>
   </div>
 </template>
@@ -32,8 +33,10 @@
 <script>
 
 import HousingApi from '@/API/HousingApi';
+import LogOutButton from '../components/LogOutButton.vue';
 
 export default {
+  components: { LogOutButton },
   data() {
     return {
       username: '',
@@ -44,7 +47,9 @@ export default {
 	async submitForm() {
 		var housingApi = new HousingApi()
 		try {
-			await housingApi.login(this.username, this.password)
+			await housingApi.login(this.username, this.password);
+      this.username = '';
+      this.password = '';
 		} catch (error) {
 			console.error(error)
 		}

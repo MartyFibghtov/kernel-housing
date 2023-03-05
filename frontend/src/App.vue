@@ -6,7 +6,7 @@
       <router-link to="/entrance-request/all">Requests</router-link> |
       <router-link to="/entrance-request/create">New Requests</router-link> |
   </nav>
-  <router-view />
+  <router-view/>
 </template>
 
 <style>

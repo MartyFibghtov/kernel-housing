@@ -5,11 +5,11 @@ class HousingApi {
     constructor() {
         this.token = Cookies.get('token')
         this.apiBaseUrl = "http://127.0.0.1:8000/";
-        this.authToken = "3e5fa5ad3a05dde03edb3958c729308f8beaba90";
+        this.authToken = "";
     }
 
     getAuthorizationHeader() {
-        const headers = { 'Authorization': `Token ${this.authToken}` };
+        const headers = { 'Authorization': `Token ${this.token}` };
         return headers;
     }
 
@@ -28,6 +28,7 @@ class HousingApi {
     async logout(){
         Cookies.remove('token');
         this.token = null;
+        console.log(Cookies.get('token'))
     }
 
     async getAllCars() {
@@ -53,8 +54,14 @@ class HousingApi {
             ...this.getAuthorizationHeader()
         };
         const body = JSON.stringify({ car_number: carNumber, car_type: carType, car_mark: carMark, owner: owner });
-        const esponse = await fetch(url, { method: 'POST', headers, body });
+        const response = await fetch(url, { method: 'POST', headers, body });
+        console.log(response);
         const data = await response.json();
+
+        if (!data.success){
+            throw  new Error(data.message);
+        }
+
         return data.result;
     }
 

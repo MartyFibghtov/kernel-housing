@@ -78,9 +78,9 @@ export default {
   name: "ErForm",
   data() {
     return {
-      accounts: null,
+      accounts: [],
       selectedAccount: null,
-      cars: null,
+      cars: [],
       selectedCar: null,
       isPaid: false,
       note: "",
