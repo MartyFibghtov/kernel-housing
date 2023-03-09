@@ -90,26 +90,25 @@ export default {
     this.loadCarsAccounts();
   },
   methods: {
-	async loadCarsAccounts() {
-		this.cars = await housingApi.getAllCars();
-		this.accounts = await housingApi.getAllPersonalAccounts();
-	},
+    async loadCarsAccounts() {
+      this.cars = await housingApi.getAllCars();
+      this.accounts = await housingApi.getAllPersonalAccounts();
+    },
     async handleSubmit() {
       if (this.selectedAccount && this.selectedCar) {
         let resp = await housingApi.createEntranceRequest(
           this.selectedAccount,
           this.selectedCar,
-		  true,
+          true,
           this.isPaid,
           this.note
         );
-		this.selectedAccount = null;
-		this.selectedCar = null;
-		this.isPaid = null;
-		this.note = ""
-
+        this.selectedAccount = null;
+        this.selectedCar = null;
+        this.isPaid = null;
+        this.note = "";
       } else {
-        alert("Please select an account and a car");
+        this.$toast.warning("Please select an account and a car");
       }
     },
   },

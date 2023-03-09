@@ -8,6 +8,14 @@ class HousingApi {
         this.authToken = "";
     }
 
+    getResponseData(data) {
+        if (!data.success)
+        {
+            throw new Error("Error! " + data.message);
+        }
+        return data.result;
+    }
+
     getAuthorizationHeader() {
         const headers = { 'Authorization': `Token ${this.token}` };
         return headers;
@@ -19,7 +27,7 @@ class HousingApi {
         const body = JSON.stringify({ username, password });
         const response = await fetch(url, { method: 'POST', headers, body });
         const data = await response.json();
-        console.log(data.token)
+
         // Set token to cookie
         Cookies.set('token', data.token)
         return data.token;
@@ -28,7 +36,6 @@ class HousingApi {
     async logout(){
         Cookies.remove('token');
         this.token = null;
-        console.log(Cookies.get('token'))
     }
 
     async getAllCars() {
@@ -36,7 +43,8 @@ class HousingApi {
         const headers = this.getAuthorizationHeader();
         const response = await fetch(url, { headers });
         const data = await response.json();
-        return data.result;
+
+        return this.getResponseData(data);
     }
 
     async getCarById(carId) {
@@ -44,7 +52,8 @@ class HousingApi {
         const headers = this.getAuthorizationHeader();
         const response = await fetch(url, { headers });
         const data = await response.json();
-        return data.result;
+
+        return this.getResponseData(data);
     }
 
     async createCar(carNumber, carType, carMark, owner = null) {
@@ -55,23 +64,18 @@ class HousingApi {
         };
         const body = JSON.stringify({ car_number: carNumber, car_type: carType, car_mark: carMark, owner: owner });
         const response = await fetch(url, { method: 'POST', headers, body });
-        console.log(response);
         const data = await response.json();
 
-        if (!data.success){
-            throw  new Error(data.message);
-        }
-
-        return data.result;
+        return this.getResponseData(data);
     }
 
     async getAllCarMarks() {
         const url = `${this.apiBaseUrl}/api/cars/marks/get-all/`;
-        console.log(url)
         const headers = this.getAuthorizationHeader();
         const response = await fetch(url, { headers });
         const data = await response.json();
-        return data.result;
+        
+        return this.getResponseData(data);
     }
 
     async getAllCarTypes() {
@@ -79,7 +83,8 @@ class HousingApi {
         const headers = this.getAuthorizationHeader();
         const response = await fetch(url, { headers });
         const data = await response.json();
-        return data.result;
+        
+        return this.getResponseData(data);
     }
 
     async getAllEntranceRequests(periodStart = null, periodEnd = null) {
@@ -93,19 +98,16 @@ class HousingApi {
         const headers = this.getAuthorizationHeader();
         const response = await fetch(url, { headers });
         const data = await response.json();
-        return data.result;
+        
+        return this.getResponseData(data);
     }
 
     async getAllEntranceRequestsWithSubdata(periodStart = null, periodEnd = null) {
         var ers = await this.getAllEntranceRequests(periodStart = null, periodEnd = null);
-        console.log(ers)
         var personalAccounts = await this.getAllPersonalAccounts();
-        console.log(personalAccounts)
         var cars = await this.getAllCars();
-        console.log(cars)
 
         ers.forEach(er => {
-            console.log(er)
             er.car = cars.find(element => element.id === er.car)
             er.request_account = personalAccounts.find(element => element.id === er.request_account)
         });
@@ -117,7 +119,8 @@ class HousingApi {
         const url = `${this.apiBaseUrl}/api/entrance-request/get-by-id?id=${id}`;
         const headers = this.getAuthorizationHeader();
         const response = await axios.get(url, { headers });
-        return response.result;
+        
+        return this.getResponseData(data);
     }
 
     async createEntranceRequest(request_account, car, is_car, is_paid, note) {
@@ -125,15 +128,16 @@ class HousingApi {
         const headers = this.getAuthorizationHeader();
         const data = { request_account, car, is_car, is_paid, note };
         const response = await axios.post(url, data, { headers });
-        console.log(response);
-        return response.result;
+        
+        return this.getResponseData(data);
     }
 
     async deleteEntranceRequestById(id) {
         const url = `${this.apiBaseUrl}/api/entrance-request/delete-by-id?id=${id}`;
         const headers = this.getAuthorizationHeader();
         const response = await axios.delete(url, { headers });
-        return response.result;
+        
+        return this.getResponseData(data);
     }
 
     async getAllPersonalAccounts() {
@@ -141,7 +145,8 @@ class HousingApi {
         const headers = this.getAuthorizationHeader();
         const response = await fetch(url, { headers });
         const data = await response.json();
-        return data.result;
+        
+        return this.getResponseData(data);
     }
 
 }

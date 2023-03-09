@@ -23,7 +23,7 @@
 		  await this.api.logout();
 		  // Do something after logout
 		} catch (error) {
-		  console.error(error);
+			this.$toast.error(error.message);
 		}
 	  }
 	}
