@@ -1,13 +1,21 @@
 <template>
-  <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
+  <div id="App">
+    <nav>
       <router-link to="/login">Login</router-link> |
       <router-link to="/entrance-request/all">Requests</router-link> |
       <router-link to="/entrance-request/create">New Requests</router-link> |
-  </nav>
-  <router-view/>
+    </nav>
+    <router-view />
+  </div>
 </template>
+
+<script>
+export default {
+  name: "App",
+  components: {
+  },
+};
+</script>
 
 <style>
 #app {

@@ -51,7 +51,7 @@ export default {
       this.username = '';
       this.password = '';
 		} catch (error) {
-			console.error(error)
+			this.$toast.error(error.message)
 		}
 	}
   }

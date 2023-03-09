@@ -52,29 +52,22 @@ export default {
   },
   methods: {
     async loadRequests() {
-      console.log("called");
       try {
         var housingApi = new HousingApi();
         const response = await housingApi.getAllEntranceRequestsWithSubdata();
         this.requests = response;
         this.shownRequest = response;
-        console.log(this.response);
       } catch (error) {
-        console.error(error);
+        this.$toast.error(error.message);
       }
     },
     searchForRequests() {
       try {
         var tempArr = [];
         const searchLower = this.searchRequest.toLowerCase();
-
-        // for (var i = 0; i < this.requests.length; i++)
-        // {
-        //   if 
-        // }
         this.shownRequest = this.requests.filter((x) => x.car.car_number.toLowerCase().indexOf(searchLower) > -1)
       } catch (error) {
-        console.error(error);
+        this.$toast.error(error.message);
       }
     },
     formatDate(dateStr) {

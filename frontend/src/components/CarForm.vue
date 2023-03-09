@@ -122,8 +122,7 @@ export default {
         this.isPaid = null;
         this.note = "";
       } else {
-        alert("Please select an account and a car");
-      }
+        this.$toast.warning("Please enter valid car car");      }
     },
   },
 };
