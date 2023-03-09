@@ -42,8 +42,9 @@ Authorization: Token {auth token}
 <details>
  <summary><code>GET</code> <code><b>/api/cars/get-all/</b></code> <code>(returns all cars)</code></summary>
 
-Permissions: Any authorised user
-
+Permissions: Any authorised user </br>
+Statuses:
+200
 ##### Parameters
 
 | name    | type     | data type | description           |
@@ -53,15 +54,15 @@ Permissions: Any authorised user
 | name      | data type    | description                                                                             |
 |-----------|--------------|-----------------------------------------------------------------------------------------|
 | `result`  | List[string] | A list of existing cars for the given word.                                             |
-| `success` | boolean      | Indicates if the operation was successful or not.                                       |
-| `message` | string       | An optional message providing additional information about the result of the operation. |
 
 </details>
 
 <details>
  <summary><code>GET</code> <code><b>/api/cars/get-by-id/</b></code> <code>(returns information about requested car)</code></summary>
 
-Permissions: Any authorised user
+Permissions: Any authorised user </br>
+Statuses:
+200, 404
 
 ##### Parameters
 
@@ -73,15 +74,15 @@ Permissions: Any authorised user
 | name      | data type    | description                                                                             |
 |-----------|--------------|-----------------------------------------------------------------------------------------|
 | `result`  | List[string] | A list of existing cars for the given word.                                             |
-| `success` | boolean      | Indicates if the operation was successful or not.                                       |
-| `message` | string       | An optional message providing additional information about the result of the operation. |
-
 </details>
 
 <details>
  <summary><code>POST</code> <code><b>/api/cars/create/</b></code> <code>(creates new car)</code></summary>
 
-Permissions: Admin or Security
+Permissions: Admin or Security </br>
+Statuses:
+200 400 500
+
 
 ##### Parameters
 
@@ -97,8 +98,6 @@ Permissions: Admin or Security
 | name      | data type | description                                                                             |
 |-----------|-----------|-----------------------------------------------------------------------------------------|
 | `result`  | id        | id of created car                                                                       |
-| `success` | boolean   | Indicates if the operation was successful or not.                                       |
-| `message` | string    | An optional message providing additional information about the result of the operation. |
 
 </details>
 
@@ -106,7 +105,9 @@ Permissions: Admin or Security
 <details>
  <summary><code>GET</code> <code><b>/api/cars/marks/get-all/</b></code> <code>(returns all car marks and their ids)</code></summary>
 
-Permissions: Admin or Security
+Permissions: Admin or Security </br>
+Statuses:
+200
 
 ##### Parameters
  No
@@ -122,7 +123,9 @@ Permissions: Admin or Security
 <details>
  <summary><code>GET</code> <code><b>/api/cars/types/get-all/</b></code> <code>(returns all car types and their ids)</code></summary>
 
-Permissions: Admin or Security
+Permissions: Admin or Security </br>
+Statuses:
+200
 
 ##### Parameters
 
@@ -145,7 +148,9 @@ No
 Returns all entrance requests. 
 By default, only active withing 24 hours.
 
-Permissions: Authenticated
+Permissions: Authenticated </br>
+Statuses:
+200
 
 ##### Parameters
 
@@ -158,8 +163,6 @@ Permissions: Authenticated
 | name      | data type             | description                                                                             |
 |-----------|-----------------------|-----------------------------------------------------------------------------------------|
 | `result`  | List[EntranceRequest] | list of all current entrance request                                                    |
-| `success` | boolean               | Indicates if the operation was successful or not.                                       |
-| `message` | string                | An optional message providing additional information about the result of the operation. |
 
 </details>
 
@@ -168,7 +171,9 @@ Permissions: Authenticated
 
 Returns entrance requests by id.
 
-Permissions: Authenticated
+Permissions: Authenticated</br>
+Statuses:
+200 400 404
 
 ##### Parameters
 
@@ -180,8 +185,6 @@ Permissions: Authenticated
 | name      | data type        | description                                                                             |
 |-----------|------------------|-----------------------------------------------------------------------------------------|
 | `result`  | EntranceRequest  | Entrance request                                                                        |
-| `success` | boolean          | Indicates if the operation was successful or not.                                       |
-| `message` | string           | An optional message providing additional information about the result of the operation. |
 
 </details>
 
@@ -190,7 +193,9 @@ Permissions: Authenticated
 
 Create new entrance request.
 
-Permissions: Admin or Security 
+Permissions: Admin or Security </br>
+Statuses:
+200 400 500
 
 ##### Parameters
 
@@ -206,7 +211,6 @@ Permissions: Admin or Security
 | name      | data type        | description                                                                                         |
 |-----------|------------------|-----------------------------------------------------------------------------------------------------|
 | `result`  | Entrance Request | id of created request    Created entrance request Indicates if the operation was successful or not. |
-| `message` | string           | An optional message providing additional information about the result of the operation.             |
 
 </details>
 
@@ -215,7 +219,10 @@ Permissions: Admin or Security
 
 Deletes entrance request.
 
-Permissions: Admin or Security 
+Permissions: Admin or Security </br>
+Statuses:
+200 400 404
+
 
 ##### Parameters
 
@@ -227,7 +234,6 @@ Permissions: Admin or Security
 | name      | data type        | description                                                                                         |
 |-----------|------------------|-----------------------------------------------------------------------------------------------------|
 | `result`  | Entrance Request | id of created request    Created entrance request Indicates if the operation was successful or not. |
-| `message` | string           | An optional message providing additional information about the result of the operation.             |
 
 </details>
 
@@ -241,7 +247,9 @@ ___
 <details>
  <summary><code>GET</code> <code><b>/api/address/personal-account/get-all/</b></code> <code>(returns all personal accounts)</code></summary>
 
-Permissions: Admin or Security
+Permissions: Admin or Security </br>
+Statuses:
+200
 
 ##### Parameters
 
@@ -258,7 +266,9 @@ No
 <details>
  <summary><code>GET</code> <code><b>/api/address/street/get-all/</b></code> <code>(returns all street names and their ids)</code></summary>
 
-Permissions: Admin or Security
+Permissions: Admin or Security </br>
+Statuses:
+200
 
 ##### Parameters
 
@@ -276,7 +286,9 @@ No
 <details>
  <summary><code>GET</code> <code><b>/api/address/address/get-all/</b></code> <code>(returns all addresses and their ids)</code></summary>
 
-Permissions: Admin or Security
+Permissions: Admin or Security </br>
+Statuses:
+200 400
 
 ##### Parameters
 
